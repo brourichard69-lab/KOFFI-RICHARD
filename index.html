@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KOFFI Brou Kouassi Richard — Portfolio Ingénieur Génie Civil</title>
+<meta name="description" content="Portfolio de KOFFI Brou Kouassi Richard, Ingénieur d'État en Génie Civil et Urbanisme (HESTIM / INSA Lyon). Études de structure, notes de calcul, modélisation BIM, plans d'exécution." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+  :root{
+    --bg:#f7f9fc;
+    --bg-alt:#ffffff;
+    --surface:#ffffff;
+    --ink:#0b1a2b;
+    --ink-2:#1f2d3d;
+    --muted:#6b7a90;
+    --line:#e4eaf2;
+    --brand:#1d4ed8;     /* bleu profond */
+    --brand-2:#2563eb;
+    --brand-soft:#e8efff;
+    --accent:#0ea5e9;
+    --shadow:0 10px 30px rgba(13, 38, 76, .08);
+    --shadow-lg:0 20px 50px rgba(13, 38, 76, .12);
+    --radius:14px;
+    --radius-lg:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Space Grotesk','Inter',sans-serif;color:var(--ink);line-height:1.2;font-weight:700}
+  a{color:var(--brand);text-decoration:none}
+  img{max-width:100%;display:block}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+  .section{padding:110px 0;position:relative}
+  .section-alt{background:var(--bg-alt)}
+  .eyebrow{
+    display:inline-block;color:var(--brand);font-weight:600;
+    text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;margin-bottom:14px
+  }
+  .section-title{font-size:clamp(1.8rem,3.2vw,2.6rem);margin-bottom:14px}
+  .section-sub{color:var(--muted);font-size:1.05rem;max-width:680px;margin-bottom:56px}
+
+  /* NAV */
+  nav.top{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(255,255,255,.8);backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;transition:all .3s ease;
+  }
+  nav.top.scrolled{border-bottom-color:var(--line);box-shadow:0 2px 10px rgba(0,0,0,.03)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1200px;margin:0 auto}
+  .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;color:var(--ink);display:flex;gap:10px;align-items:center}
+  .logo .dot{width:10px;height:10px;background:var(--brand);border-radius:50%;box-shadow:0 0 0 4px var(--brand-soft)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{color:var(--ink-2);font-weight:500;font-size:.95rem;position:relative;padding:6px 2px;transition:color .2s}
+  .nav-links a:hover{color:var(--brand)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--brand);transition:width .25s}
+  .nav-links a:hover::after{width:100%}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:999px;font-weight:600;font-size:.95rem;
+    transition:all .25s ease;cursor:pointer;border:none;white-space:nowrap
+  }
+  .btn-primary{background:var(--brand);color:#fff;box-shadow:0 6px 20px rgba(37,99,235,.32)}
+  .btn-primary:hover{background:var(--brand-2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,99,235,.4)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.5rem;color:var(--ink);cursor:pointer}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;display:flex;align-items:center;padding:140px 0 80px;
+    background:
+      radial-gradient(1100px 540px at 85% -10%,rgba(37,99,235,.10),transparent 60%),
+      radial-gradient(800px 400px at -5% 50%,rgba(14,165,233,.08),transparent 60%),
+      var(--bg);
+    position:relative;overflow:hidden
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(29,78,216,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(29,78,216,.05) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+    pointer-events:none
+  }
+  .hero-grid{display:grid;grid-template-columns:1.2fr .9fr;gap:70px;align-items:center;position:relative;z-index:2}
+  .hero-tag{
+    display:inline-flex;gap:8px;align-items:center;
+    background:var(--brand-soft);color:var(--brand);
+    padding:8px 16px;border-radius:999px;font-size:.85rem;font-weight:600;margin-bottom:22px
+  }
+  .hero-tag .pulse{width:8px;height:8px;background:var(--brand);border-radius:50%;animation:pulse 1.8s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+  .hero h1{font-size:clamp(2.2rem,4.8vw,3.8rem);margin-bottom:18px;letter-spacing:-.02em}
+  .hero h1 .hl{color:var(--brand);position:relative;white-space:nowrap}
+  .hero h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;background:var(--brand-soft);z-index:-1;border-radius:4px}
+  .hero-sub{font-size:1.15rem;color:var(--muted);margin-bottom:14px;max-width:580px}
+  .hero-pitch{font-size:1.02rem;color:var(--ink-2);margin-bottom:36px;max-width:580px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:520px}
+  .stat{border-left:3px solid var(--brand);padding:4px 0 4px 16px}
+  .stat .num{font-family:'Space Grotesk';font-size:1.7rem;font-weight:700;color:var(--ink)}
+  .stat .lbl{font-size:.82rem;color:var(--muted)}
+  .hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+  .photo-wrap{
+    position:relative;width:360px;height:440px;border-radius:var(--radius-lg);
+    overflow:hidden;box-shadow:var(--shadow-lg);
+    background:linear-gradient(135deg,var(--brand) 0%,var(--accent) 100%)
+  }
+  .photo-wrap img{width:100%;height:100%;object-fit:cover}
+  .badge-float{
+    position:absolute;background:#fff;border-radius:var(--radius);
+    padding:14px 18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;
+    animation:float 4s ease-in-out infinite
+  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .badge-float i{background:var(--brand-soft);color:var(--brand);width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:1.1rem}
+  .badge-float .t{font-weight:600;font-size:.95rem;color:var(--ink)}
+  .badge-float .s{font-size:.78rem;color:var(--muted)}
+  .badge-1{top:20px;left:-30px}
+  .badge-2{bottom:30px;right:-30px;animation-delay:2s}
+
+  /* SECTION: ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+  .about-txt p{color:var(--ink-2);margin-bottom:18px;font-size:1.02rem}
+  .about-txt strong{color:var(--ink);font-weight:600}
+  .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:30px}
+  .pillar{background:var(--surface);padding:22px;border-radius:var(--radius);border:1px solid var(--line);transition:all .3s}
+  .pillar:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--brand-soft)}
+  .pillar i{color:var(--brand);font-size:1.4rem;margin-bottom:10px;display:block}
+  .pillar h4{font-size:1.02rem;margin-bottom:6px}
+  .pillar p{color:var(--muted);font-size:.9rem;line-height:1.5;margin:0}
+  .timeline{position:relative;padding-left:28px}
+  .timeline::before{content:"";position:absolute;left:8px;top:10px;bottom:10px;width:2px;background:var(--line)}
+  .tl-item{position:relative;margin-bottom:28px}
+  .tl-item::before{content:"";position:absolute;left:-27px;top:6px;width:16px;height:16px;background:#fff;border:3px solid var(--brand);border-radius:50%}
+  .tl-date{font-size:.82rem;color:var(--brand);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
+  .tl-item h4{font-size:1.05rem;margin-bottom:4px}
+  .tl-item p{color:var(--muted);font-size:.92rem}
+
+  /* SERVICES */
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+  .service{
+    background:var(--surface);padding:32px 28px;border-radius:var(--radius-lg);
+    border:1px solid var(--line);transition:all .35s ease;position:relative;overflow:hidden
+  }
+  .service::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--brand),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+  .service:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+  .service:hover::before{transform:scaleX(1)}
+  .service .icon{
+    width:56px;height:56px;border-radius:14px;background:var(--brand-soft);color:var(--brand);
+    display:grid;place-items:center;font-size:1.4rem;margin-bottom:18px
+  }
+  .service h3{font-size:1.15rem;margin-bottom:10px}
+  .service p{color:var(--muted);font-size:.94rem;margin-bottom:14px}
+  .service ul{list-style:none;padding:0}
+  .service ul li{font-size:.88rem;color:var(--ink-2);padding:4px 0;padding-left:20px;position:relative}
+  .service ul li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;left:0;color:var(--brand);font-size:.75rem;top:8px}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+  .skill-group{background:var(--surface);padding:30px;border-radius:var(--radius-lg);border:1px solid var(--line)}
+  .skill-group h3{display:flex;align-items:center;gap:12px;font-size:1.15rem;margin-bottom:22px}
+  .skill-group h3 i{color:var(--brand);background:var(--brand-soft);width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:1rem}
+  .skill-list{display:flex;flex-wrap:wrap;gap:10px}
+  .skill-chip{
+    background:var(--bg);border:1px solid var(--line);
+    padding:8px 14px;border-radius:8px;font-size:.86rem;font-weight:500;color:var(--ink-2);
+    transition:all .2s
+  }
+  .skill-chip:hover{background:var(--brand-soft);color:var(--brand);border-color:var(--brand);transform:translateY(-2px)}
+  .skill-bar{margin-top:8px}
+  .bar-row{margin-bottom:16px}
+  .bar-row .top{display:flex;justify-content:space-between;margin-bottom:6px;font-size:.9rem}
+  .bar-row .top strong{font-weight:600;color:var(--ink)}
+  .bar-row .top span{color:var(--muted);font-size:.82rem}
+  .bar{height:7px;background:var(--bg);border-radius:10px;overflow:hidden}
+  .bar > div{height:100%;background:linear-gradient(90deg,var(--brand),var(--accent));border-radius:10px;width:0;transition:width 1.5s cubic-bezier(.2,.8,.2,1)}
+
+  /* PROJECTS */
+  .projects-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+  .filter-btn{
+    background:#fff;border:1px solid var(--line);padding:8px 18px;border-radius:999px;
+    font-weight:500;font-size:.88rem;color:var(--ink-2);cursor:pointer;transition:all .2s
+  }
+  .filter-btn.active,.filter-btn:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
+  .project{
+    background:var(--surface);border-radius:var(--radius-lg);overflow:hidden;
+    border:1px solid var(--line);transition:all .35s;cursor:pointer;
+    display:flex;flex-direction:column
+  }
+  .project:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
+  .project-img{height:240px;overflow:hidden;position:relative;background:var(--bg)}
+  .project-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .project:hover .project-img img{transform:scale(1.07)}
+  .project-img .overlay{
+    position:absolute;inset:0;background:linear-gradient(to top,rgba(11,26,43,.65),transparent 60%);
+    display:flex;align-items:flex-end;padding:18px;opacity:0;transition:opacity .3s
+  }
+  .project:hover .project-img .overlay{opacity:1}
+  .project-img .overlay .view-btn{
+    background:#fff;color:var(--ink);padding:8px 16px;border-radius:999px;
+    font-size:.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px
+  }
+  .project-tag{
+    position:absolute;top:14px;left:14px;background:rgba(255,255,255,.95);
+    color:var(--brand);padding:6px 12px;border-radius:999px;font-size:.75rem;
+    font-weight:600;backdrop-filter:blur(6px)
+  }
+  .project-body{padding:24px;flex:1;display:flex;flex-direction:column}
+  .project-body h3{font-size:1.15rem;margin-bottom:10px;line-height:1.3}
+  .project-body p{color:var(--muted);font-size:.92rem;margin-bottom:14px;flex:1}
+  .project-tools{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .tool{background:var(--brand-soft);color:var(--brand);padding:4px 10px;border-radius:6px;font-size:.75rem;font-weight:500}
+  .project-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--line);font-size:.85rem}
+  .project-footer .count{color:var(--muted)}
+  .project-footer .open{color:var(--brand);font-weight:600}
+
+  /* MODAL */
+  .modal{
+    position:fixed;inset:0;background:rgba(11,26,43,.92);z-index:1000;
+    display:none;align-items:center;justify-content:center;padding:20px
+  }
+  .modal.open{display:flex;animation:fadeIn .25s ease}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .modal-box{
+    background:#fff;max-width:1100px;width:100%;max-height:92vh;border-radius:var(--radius-lg);
+    overflow:hidden;display:grid;grid-template-columns:1.3fr 1fr;position:relative
+  }
+  .modal-close{
+    position:absolute;top:14px;right:14px;background:rgba(0,0,0,.6);color:#fff;
+    border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;
+    font-size:1.1rem;z-index:10
+  }
+  .modal-gallery{background:#0b1a2b;position:relative;min-height:400px;max-height:92vh;overflow:hidden}
+  .modal-main-img{width:100%;height:100%;min-height:400px;max-height:92vh;object-fit:contain;background:#0b1a2b}
+  .modal-thumbs{position:absolute;bottom:14px;left:14px;right:14px;display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+  .modal-thumbs img{width:62px;height:62px;object-fit:cover;border-radius:8px;opacity:.55;cursor:pointer;border:2px solid transparent;flex-shrink:0;transition:opacity .2s}
+  .modal-thumbs img:hover,.modal-thumbs img.active{opacity:1;border-color:#fff}
+  .modal-info{padding:36px;overflow-y:auto;max-height:92vh}
+  .modal-info .tag{display:inline-block;background:var(--brand-soft);color:var(--brand);padding:6px 14px;border-radius:999px;font-size:.78rem;font-weight:600;margin-bottom:14px}
+  .modal-info h2{font-size:1.5rem;margin-bottom:16px}
+  .modal-info h4{font-size:.92rem;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-top:22px;margin-bottom:10px}
+  .modal-info p{color:var(--ink-2);margin-bottom:14px;font-size:.95rem}
+  .modal-info ul{margin-left:18px;color:var(--ink-2);font-size:.92rem}
+  .modal-info ul li{margin-bottom:6px}
+
+  /* CERTIFICATIONS */
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
+  .cert-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
+    overflow:hidden;cursor:pointer;transition:all .4s cubic-bezier(.2,.8,.2,1);
+    display:flex;flex-direction:column;position:relative
+  }
+  .cert-card::before{
+    content:"";position:absolute;inset:0;border-radius:var(--radius-lg);
+    background:linear-gradient(135deg,transparent 0%,rgba(37,99,235,.08) 50%,transparent 100%);
+    opacity:0;transition:opacity .4s;pointer-events:none;z-index:1
+  }
+  .cert-card:hover{transform:translateY(-10px) scale(1.01);box-shadow:0 25px 60px rgba(29,78,216,.18);border-color:transparent}
+  .cert-card:hover::before{opacity:1}
+
+  /* Header - infos en haut */
+  .cert-head{
+    padding:22px 24px 16px;display:flex;align-items:flex-start;gap:14px;
+    border-bottom:1px solid var(--line);background:var(--surface);position:relative;z-index:2
+  }
+  .cert-head .cert-icon{
+    width:48px;height:48px;border-radius:12px;background:var(--brand-soft);color:var(--brand);
+    display:grid;place-items:center;font-size:1.2rem;flex-shrink:0
+  }
+  .cert-head-txt{flex:1;min-width:0}
+  .cert-issuer{font-size:.72rem;color:var(--brand);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+  .cert-head h4{font-size:1rem;line-height:1.35;margin-bottom:8px;color:var(--ink)}
+  .cert-date{color:var(--muted);font-size:.82rem;display:flex;align-items:center;gap:6px}
+  .cert-date i{color:var(--brand)}
+
+  /* Full JPEG display - full certificate visible */
+  .cert-preview{
+    position:relative;background:linear-gradient(135deg,#f0f4fa,#e4eaf2);
+    overflow:hidden;padding:20px;
+    display:grid;place-items:center;min-height:240px
+  }
+  .cert-preview img{
+    width:100%;height:auto;max-height:320px;object-fit:contain;
+    border-radius:8px;box-shadow:0 10px 30px rgba(11,26,43,.18);
+    transition:transform .6s cubic-bezier(.2,.8,.2,1),filter .4s;
+    display:block
+  }
+  .cert-card:hover .cert-preview img{
+    transform:scale(1.06) rotate(-.5deg);
+    filter:drop-shadow(0 18px 40px rgba(29,78,216,.28))
+  }
+
+  /* shimmer animation pour attirer l'oeil */
+  .cert-preview::after{
+    content:"";position:absolute;top:-50%;left:-60%;width:60%;height:200%;
+    background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.55) 50%,transparent 100%);
+    transform:rotate(18deg);
+    animation:shimmer 4s ease-in-out infinite;pointer-events:none;z-index:1
+  }
+  @keyframes shimmer{
+    0%{left:-60%}
+    100%{left:130%}
+  }
+
+  /* Call to action - voir le certificat */
+  .cert-cta{
+    position:absolute;bottom:14px;right:14px;z-index:3;
+    background:rgba(255,255,255,.97);color:var(--brand);
+    padding:9px 16px;border-radius:999px;font-size:.82rem;font-weight:600;
+    display:inline-flex;align-items:center;gap:6px;
+    box-shadow:0 6px 16px rgba(29,78,216,.22);
+    opacity:0;transform:translateY(10px);transition:all .35s ease;
+    backdrop-filter:blur(6px)
+  }
+  .cert-card:hover .cert-cta{opacity:1;transform:translateY(0)}
+  .cert-cta i{animation:pulseArrow 1.2s ease-in-out infinite}
+  @keyframes pulseArrow{
+    0%,100%{transform:translateX(0)}
+    50%{transform:translateX(4px)}
+  }
+
+  /* Border glow animé sur hover */
+  .cert-card:hover{box-shadow:0 25px 60px rgba(29,78,216,.22),0 0 0 1px var(--brand-soft)}
+
+  /* Staggered entrance animation */
+  .cert-card.fade-up{transition-delay:0s}
+  .cert-card.fade-up.in{animation:certIn .8s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes certIn{
+    0%{opacity:0;transform:translateY(40px) scale(.95)}
+    100%{opacity:1;transform:translateY(0) scale(1)}
+  }
+
+  /* Badge PDF spécial */
+  .cert-preview.pdf-preview{
+    background:linear-gradient(135deg,#1d4ed8,#0ea5e9);
+    min-height:260px
+  }
+  .cert-preview.pdf-preview .pdf-box{
+    text-align:center;color:#fff;padding:20px;position:relative;z-index:2
+  }
+  .cert-preview.pdf-preview .pdf-box i{font-size:4rem;margin-bottom:12px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+  .cert-preview.pdf-preview .pdf-box .lbl{font-weight:700;font-size:1.1rem;letter-spacing:.06em}
+  .cert-preview.pdf-preview .pdf-box .sub{font-size:.85rem;opacity:.9;margin-top:6px}
+  .cert-preview.pdf-preview::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 30% 30%,rgba(255,255,255,.12) 0%,transparent 50%);
+    pointer-events:none
+  }
+
+  /* LIGHTBOX CERT */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(11,26,43,.96);z-index:1100;
+    display:none;align-items:center;justify-content:center;padding:30px
+  }
+  .lightbox.open{display:flex;animation:fadeIn .25s ease}
+  .lightbox img{max-width:95%;max-height:90vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+  .lightbox .close-lb{
+    position:absolute;top:20px;right:20px;background:rgba(255,255,255,.15);color:#fff;
+    border:none;width:48px;height:48px;border-radius:50%;cursor:pointer;font-size:1.2rem;
+    transition:all .2s
+  }
+  .lightbox .close-lb:hover{background:rgba(255,255,255,.3)}
+
+  /* CONTACT */
+  .contact-wrap{
+    background:linear-gradient(135deg,var(--brand) 0%,#0b1a2b 100%);
+    border-radius:var(--radius-lg);padding:60px;color:#fff;position:relative;overflow:hidden
+  }
+  .contact-wrap::before{
+    content:"";position:absolute;top:-50%;right:-20%;width:500px;height:500px;
+    background:radial-gradient(circle,rgba(14,165,233,.25),transparent 70%);
+    border-radius:50%
+  }
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;position:relative;z-index:2}
+  .contact-left .eyebrow{color:#7dd3fc}
+  .contact-left h2{color:#fff;font-size:2.2rem;margin-bottom:18px}
+  .contact-left p{color:#cbd5e1;margin-bottom:30px;font-size:1.02rem}
+  .contact-methods{display:flex;flex-direction:column;gap:18px}
+  .c-method{display:flex;align-items:center;gap:16px;color:#e2e8f0;transition:transform .2s}
+  .c-method:hover{transform:translateX(6px)}
+  .c-method i{
+    width:48px;height:48px;background:rgba(255,255,255,.12);border-radius:12px;
+    display:grid;place-items:center;font-size:1.05rem;color:#fff;flex-shrink:0
+  }
+  .c-method .l{font-size:.78rem;color:#94a3b8;display:block}
+  .c-method .v{font-weight:600;color:#fff;font-size:1rem}
+  .contact-right{background:rgba(255,255,255,.06);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:34px}
+  .contact-right h3{color:#fff;margin-bottom:22px;font-size:1.3rem}
+  .form-row{margin-bottom:16px}
+  .form-row label{color:#94a3b8;font-size:.82rem;margin-bottom:6px;display:block}
+  .form-row input,.form-row textarea{
+    width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+    padding:12px 14px;border-radius:10px;color:#fff;font-family:inherit;font-size:.95rem;
+    transition:all .2s
+  }
+  .form-row input:focus,.form-row textarea:focus{outline:none;border-color:#7dd3fc;background:rgba(255,255,255,.12)}
+  .form-row textarea{resize:vertical;min-height:110px}
+  .btn-submit{
+    width:100%;background:#fff;color:var(--brand);padding:14px;border-radius:10px;
+    font-weight:600;border:none;cursor:pointer;transition:all .2s;font-size:1rem
+  }
+  .btn-submit:hover{background:#7dd3fc}
+
+  /* FOOTER */
+  footer{background:#0b1a2b;color:#94a3b8;padding:40px 0 24px;text-align:center}
+  footer .socials{display:flex;gap:14px;justify-content:center;margin-bottom:20px}
+  footer .socials a{
+    width:44px;height:44px;background:rgba(255,255,255,.06);border-radius:50%;
+    display:grid;place-items:center;color:#fff;transition:all .25s
+  }
+  footer .socials a:hover{background:var(--brand);transform:translateY(-3px)}
+  footer p{font-size:.88rem}
+
+  /* Float CTA */
+  .float-contact{
+    position:fixed;bottom:26px;right:26px;background:#25D366;color:#fff;
+    width:60px;height:60px;border-radius:50%;display:grid;place-items:center;
+    font-size:1.6rem;box-shadow:0 10px 26px rgba(37,211,102,.45);z-index:90;
+    transition:transform .25s
+  }
+  .float-contact:hover{transform:scale(1.1)}
+
+  /* ANIMATIONS */
+  .fade-up{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.2,.8,.2,1)}
+  .fade-up.in{opacity:1;transform:translateY(0)}
+
+  /* RESPONSIVE */
+  @media (max-width:980px){
+    .section{padding:80px 0}
+    .hero-grid{grid-template-columns:1fr;gap:60px;text-align:center}
+    .hero-stats{margin:0 auto}
+    .hero-cta{justify-content:center}
+    .hero-sub,.hero-pitch{margin-left:auto;margin-right:auto}
+    .photo-wrap{width:280px;height:340px}
+    .about-grid{grid-template-columns:1fr;gap:40px}
+    .contact-grid{grid-template-columns:1fr;gap:40px}
+    .contact-wrap{padding:40px 28px}
+    .modal-box{grid-template-columns:1fr;max-height:96vh}
+    .modal-gallery{min-height:280px;max-height:45vh}
+    .modal-main-img{min-height:280px;max-height:45vh}
+    .modal-info{max-height:45vh;padding:24px}
+    .nav-links{
+      position:fixed;top:72px;left:0;right:0;background:#fff;flex-direction:column;
+      gap:0;padding:20px;transform:translateY(-150%);transition:transform .3s;
+      border-bottom:1px solid var(--line);box-shadow:var(--shadow)
+    }
+    .nav-links.open{transform:translateY(0)}
+    .nav-links a{padding:12px 0;width:100%;border-bottom:1px solid var(--line)}
+    .nav-links .btn{margin-top:10px;width:100%;justify-content:center}
+    .menu-toggle{display:block}
+    .badge-1{left:-10px}
+    .badge-2{right:-10px}
+  }
+  @media (max-width:560px){
+    .hero-stats{grid-template-columns:1fr;gap:14px;max-width:280px}
+    .pillars{grid-template-columns:1fr}
+    .hero{padding:120px 0 60px}
+    .section-sub{margin-bottom:40px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top" id="nav">
+  <div class="nav-inner">
+    <div class="logo"><span class="dot"></span>KOFFI.R</div>
+    <div class="nav-links" id="nav-links">
+      <a href="#about">À propos</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projets</a>
+      <a href="#skills">Compétences</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+      <a href="assets/CV-Koffi-Brou-Kouassi-Richard.pdf" download class="btn btn-primary">
+        <i class="fa-solid fa-download"></i> CV
+      </a>
+    </div>
+    <button class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-tag fade-up"><span class="pulse"></span> Disponible pour vos projets & missions freelance</div>
+      <h1 class="fade-up">Ingénieur d'État en<br/><span class="hl">Génie Civil</span> & Urbanisme</h1>
+      <p class="hero-sub fade-up">KOFFI Brou Kouassi Richard — Double diplomation HESTIM Casablanca &amp; INSA Lyon</p>
+      <p class="hero-pitch fade-up">Je conçois, dimensionne et modélise des ouvrages <strong>bâtiments, routes et ponts</strong> en combinant rigueur technique, maîtrise des outils BIM et regard pratique du terrain.</p>
+      <div class="hero-cta fade-up">
+        <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Voir mes projets</a>
+        <a href="#contact" class="btn btn-ghost"><i class="fa-regular fa-paper-plane"></i> Me contacter</a>
+      </div>
+      <div class="hero-stats fade-up">
+        <div class="stat"><div class="num">6+</div><div class="lbl">Projets techniques</div></div>
+        <div class="stat"><div class="num">8</div><div class="lbl">Certifications obtenues</div></div>
+        <div class="stat"><div class="num">7+</div><div class="lbl">Stages & expériences</div></div>
+      </div>
+    </div>
+    <div class="hero-visual fade-up">
+      <div class="photo-wrap">
+        <img src="assets/photo.jpeg" alt="KOFFI Brou Kouassi Richard" />
+      </div>
+      <div class="badge-float badge-1">
+        <i class="fa-solid fa-building"></i>
+        <div><div class="t">Génie Civil</div><div class="s">HESTIM × INSA Lyon</div></div>
+      </div>
+      <div class="badge-float badge-2">
+        <i class="fa-solid fa-cubes"></i>
+        <div><div class="t">BIM / CYPECAD</div><div class="s">Certifié 2025</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section section-alt">
+  <div class="container">
+    <div class="fade-up">
+      <span class="eyebrow">À propos de moi</span>
+      <h2 class="section-title">Une formation d'élite au service de vos projets</h2>
+      <p class="section-sub">Étudiant en 5ème année de génie civil, je combine la rigueur de deux écoles d'ingénieurs (HESTIM Casablanca &amp; INSA Lyon) avec plus de 5 années d'expérience terrain en tant que chef chantier et stagiaire en bureau d'études.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-txt fade-up">
+        <p>Passionné par la <strong>réalisation et la gestion de projets de construction</strong>, je me spécialise dans le calcul de structures, le dimensionnement d'éléments en béton armé et la modélisation BIM.</p>
+        <p>Mon parcours international — entre la Côte d'Ivoire, le Maroc et la France — m'a permis d'acquérir une vision large des normes (Eurocode 2, RPS 2011) et une capacité d'adaptation forte.</p>
+        <p><strong>Objectif professionnel :</strong> rejoindre un bureau d'études de référence ou accompagner des entreprises en freelance sur des missions de dimensionnement, modélisation et suivi d'exécution.</p>
+        <div class="pillars">
+          <div class="pillar"><i class="fa-solid fa-ruler-combined"></i><h4>Rigueur technique</h4><p>Calculs vérifiés, normes respectées, livrables propres.</p></div>
+          <div class="pillar"><i class="fa-solid fa-hard-hat"></i><h4>Expérience terrain</h4><p>Ancien chef chantier — je connais la réalité du bâti.</p></div>
+          <div class="pillar"><i class="fa-solid fa-globe"></i><h4>Vision internationale</h4><p>Formé au Maroc, en France et en Côte d'Ivoire.</p></div>
+          <div class="pillar"><i class="fa-solid fa-bolt"></i><h4>Maîtrise BIM</h4><p>Revit, CYPECAD, Robot, SketchUp &amp; Lumion.</p></div>
+        </div>
+      </div>
+      <div class="timeline fade-up">
+        <div class="tl-item">
+          <div class="tl-date">Janvier 2026 — en cours</div>
+          <h4>FABRA CONTROLE — Stage PFE</h4>
+          <p>Stage de Projet de Fin d'Études en bureau d'études / contrôle technique — missions d'analyse et de vérification structurelle.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Juillet 2025 — Janvier 2026</div>
+          <h4>GUIDO ÉTUDE — Bureau d'études</h4>
+          <p>Stage long en bureau d'études : dimensionnement, notes de calcul et production de plans d'exécution sur projets de bâtiments.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2024 — 2026</div>
+          <h4>INSA Lyon, France</h4>
+          <p>Master d'État Français en Génie Civil — Spécialité architecture et urbanisme</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2023 — 2026</div>
+          <h4>HESTIM Casablanca</h4>
+          <p>Cycle ingénieur d'État en Génie Civil — Double diplomation</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Mai 2025 — Juillet 2025</div>
+          <h4>EDM Bureau Étude Marocaine</h4>
+          <p>Dimensionnement R+5 sous CYPECAD (norme RPS 2011)</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Déc. 2023 — Mai 2024</div>
+          <h4>TGCC — Maroc</h4>
+          <p>Stage d'observation d'un immeuble R+18 avec 4 sous-sols</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2017 — 2019</div>
+          <h4>BTS Génie Civil — AIST, Côte d'Ivoire</h4>
+          <p>Brevet de Technicien Supérieur option Bâtiment</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="fade-up">
+      <span class="eyebrow">Services</span>
+      <h2 class="section-title">Ce que je peux faire pour vous</h2>
+      <p class="section-sub">Des prestations techniques pointues pour vos projets de bâtiment, routes et ponts — en freelance ou dans le cadre d'une mission longue.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service fade-up">
+        <div class="icon"><i class="fa-solid fa-calculator"></i></div>
+        <h3>Études de structure</h3>
+        <p>Conception et dimensionnement béton armé selon normes Eurocode 2 et RPS 2011.</p>
+        <ul>
+          <li>Poutres, poteaux, semelles</li>
+          <li>Dalles post-tension & réticulées</li>
+          <li>Descente de charges</li>
+        </ul>
+      </div>
+
+      <div class="service fade-up">
+        <div class="icon"><i class="fa-solid fa-file-lines"></i></div>
+        <h3>Notes de calcul</h3>
+        <p>Notes de calcul complètes, claires et conformes, prêtes pour le bureau de contrôle.</p>
+        <ul>
+          <li>Hypothèses détaillées</li>
+          <li>Vérifications ELU / ELS</li>
+          <li>Livrable PDF professionnel</li>
+        </ul>
+      </div>
+
+      <div class="service fade-up">
+        <div class="icon"><i class="fa-solid fa-drafting-compass"></i></div>
+        <h3>Plans d'exécution</h3>
+        <p>Plans techniques précis et cotés, utilisables directement sur chantier.</p>
+        <ul>
+          <li>Plans de coffrage / ferraillage</li>
+          <li>Détails et nomenclatures</li>
+          <li>Export AutoCAD & PDF</li>
+        </ul>
+      </div>
+
+      <div class="service fade-up">
+        <div class="icon"><i class="fa-solid fa-cube"></i></div>
+        <h3>Modélisation BIM & 3D</h3>
+        <p>Modélisation de structures et rendus photo-réalistes pour vos clients.</p>
+        <ul>
+          <li>Robot, Revit, CYPECAD</li>
+          <li>AutoCAD, GRAITEC</li>
+          <li>Rendus SketchUp / Lumion</li>
+        </ul>
+      </div>
+
+      <div class="service fade-up">
+        <div class="icon"><i class="fa-solid fa-diagram-project"></i></div>
+        <h3>Planification & devis</h3>
+        <p>Étude économique, planning chantier et aide à la préparation d'appels d'offres.</p>
+        <ul>
+          <li>Estimation et contrôle des coûts</li>
+          <li>Planning MS Project</li>
+          <li>Dossier technique d'appel d'offres</li>
+        </ul>
+      </div>
+
+      <div class="service fade-up">
+        <div class="icon"><i class="fa-solid fa-road"></i></div>
+        <h3>Études routes & ponts</h3>
+        <p>Études hydrologiques, hydrauliques et de tracé pour infrastructures linéaires.</p>
+        <ul>
+          <li>Dimensionnement de tracé</li>
+          <li>Études hydrauliques</li>
+          <li>Tablier de pont PPBA</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section section-alt">
+  <div class="container">
+    <div class="fade-up">
+      <span class="eyebrow">Portfolio</span>
+      <h2 class="section-title">Mes projets</h2>
+      <p class="section-sub">Sélection de projets académiques et professionnels réalisés entre 2024 et 2026, couvrant le dimensionnement structurel, la modélisation BIM et les rendus 3D photo-réalistes.</p>
+    </div>
+
+    <div class="projects-filter fade-up">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="structure">Structure</button>
+      <button class="filter-btn" data-filter="bim">BIM / Modélisation</button>
+      <button class="filter-btn" data-filter="rendu">Rendu 3D</button>
+      <button class="filter-btn" data-filter="elec">Électricité / DIALUX</button>
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+
+      <div class="project" data-cat="structure bim" data-project="cypecad">
+        <div class="project-img">
+          <img src="assets/projects/cypecad/1.png" alt="CYPECAD dalle post-tension"/>
+          <span class="project-tag">Structure</span>
+          <div class="overlay"><span class="view-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></span></div>
+        </div>
+        <div class="project-body">
+          <h3>Dimensionnement CYPECAD — Dalles post-tension & réticulées</h3>
+          <p>Étude de dimensionnement de bâtiments R+3 et R+4 avec sous-sol utilisant dalles post-tensionnées et dalles réticulées alvéolaires selon l'Eurocode 2.</p>
+          <div class="project-tools">
+            <span class="tool">CYPECAD 2025</span><span class="tool">Eurocode 2</span><span class="tool">Post-tension</span>
+          </div>
+          <div class="project-footer">
+            <span class="count"><i class="fa-regular fa-images"></i> 7 images</span>
+            <span class="open">Ouvrir →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-cat="structure bim" data-project="villa">
+        <div class="project-img">
+          <img src="assets/projects/villa/1.png" alt="Villa R+1 avec sous-sol"/>
+          <span class="project-tag">Conception complète</span>
+          <div class="overlay"><span class="view-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></span></div>
+        </div>
+        <div class="project-body">
+          <h3>Villa R+1 avec sous-sol — Conception complète</h3>
+          <p>Projet d'Activité d'Expertise HESTIM : conception architecturale, BET structure, aménagement extérieur et lots techniques (plomberie & électricité).</p>
+          <div class="project-tools">
+            <span class="tool">Architecture</span><span class="tool">BET Structure</span><span class="tool">Lots techniques</span>
+          </div>
+          <div class="project-footer">
+            <span class="count"><i class="fa-regular fa-images"></i> 2 images</span>
+            <span class="open">Ouvrir →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-cat="bim rendu" data-project="maison">
+        <div class="project-img">
+          <img src="assets/projects/maison/1.jpeg" alt="Maison individuelle R+2"/>
+          <span class="project-tag">Étude économique</span>
+          <div class="overlay"><span class="view-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></span></div>
+        </div>
+        <div class="project-body">
+          <h3>Maison individuelle R+2 — Étude économique & 3D</h3>
+          <p>Projet architectural HESTIM : étude économique complète et modélisation 3D d'une maison individuelle R+2 avec plans d'exécution.</p>
+          <div class="project-tools">
+            <span class="tool">Revit</span><span class="tool">SketchUp</span><span class="tool">AutoCAD</span>
+          </div>
+          <div class="project-footer">
+            <span class="count"><i class="fa-regular fa-images"></i> 7 rendus + plans + PPT</span>
+            <span class="open">Ouvrir →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-cat="elec" data-project="dialux">
+        <div class="project-img">
+          <img src="assets/projects/dialux/1.jpeg" alt="Bilan de puissance R+4 DIALUX"/>
+          <span class="project-tag">DIALUX</span>
+          <div class="overlay"><span class="view-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></span></div>
+        </div>
+        <div class="project-body">
+          <h3>Bilan de puissance d'un bâtiment R+4 — DIALUX</h3>
+          <p>Étude d'éclairage et bilan de puissance électrique d'un bâtiment R+4 avec dimensionnement des installations selon les besoins en luminosité.</p>
+          <div class="project-tools">
+            <span class="tool">DIALUX</span><span class="tool">Bilan puissance</span><span class="tool">Électricité</span>
+          </div>
+          <div class="project-footer">
+            <span class="count"><i class="fa-regular fa-images"></i> 5 images</span>
+            <span class="open">Ouvrir →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-cat="rendu" data-project="salle">
+        <div class="project-img">
+          <img src="assets/projects/salle/1.jpeg" alt="Rendu salle de réunion"/>
+          <span class="project-tag">Rendu 3D</span>
+          <div class="overlay"><span class="view-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></span></div>
+        </div>
+        <div class="project-body">
+          <h3>Salle de réunion — Rendu photo-réaliste</h3>
+          <p>Modélisation 3D et rendus photo-réalistes d'une salle de réunion avec ambiance lumineuse travaillée et matériaux réalistes.</p>
+          <div class="project-tools">
+            <span class="tool">SketchUp</span><span class="tool">Vray</span><span class="tool">Enscape</span>
+          </div>
+          <div class="project-footer">
+            <span class="count"><i class="fa-regular fa-images"></i> 11 images</span>
+            <span class="open">Ouvrir →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-cat="rendu" data-project="docteur">
+        <div class="project-img">
+          <img src="assets/projects/docteur/1.jpeg" alt="Rendu cabinet docteur"/>
+          <span class="project-tag">Rendu 3D</span>
+          <div class="overlay"><span class="view-btn">Voir le projet <i class="fa-solid fa-arrow-right"></i></span></div>
+        </div>
+        <div class="project-body">
+          <h3>Cabinet médical — Rendu photo-réaliste</h3>
+          <p>Modélisation 3D et rendus d'un espace médical moderne avec attention particulière portée à l'éclairage et à l'ergonomie des lieux.</p>
+          <div class="project-tools">
+            <span class="tool">SketchUp</span><span class="tool">Lumion</span><span class="tool">Vray</span>
+          </div>
+          <div class="project-footer">
+            <span class="count"><i class="fa-regular fa-images"></i> 6 images</span>
+            <span class="open">Ouvrir →</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="container">
+    <div class="fade-up">
+      <span class="eyebrow">Compétences techniques</span>
+      <h2 class="section-title">Un ingénieur polyvalent</h2>
+      <p class="section-sub">Maîtrise des outils BIM de référence, des normes internationales et des softs skills indispensables sur un chantier.</p>
+    </div>
+    <div class="skills-grid">
+
+      <div class="skill-group fade-up">
+        <h3><i class="fa-solid fa-hard-hat"></i> Génie civil &amp; Structure</h3>
+        <div class="skill-bar">
+          <div class="bar-row"><div class="top"><strong>Calcul béton armé</strong><span>Expert</span></div><div class="bar"><div data-w="95"></div></div></div>
+          <div class="bar-row"><div class="top"><strong>Dimensionnement (poutres, poteaux, semelles)</strong><span>Expert</span></div><div class="bar"><div data-w="92"></div></div></div>
+          <div class="bar-row"><div class="top"><strong>Dalles post-tension / réticulées</strong><span>Avancé</span></div><div class="bar"><div data-w="85"></div></div></div>
+          <div class="bar-row"><div class="top"><strong>Eurocode 2 / RPS 2011</strong><span>Avancé</span></div><div class="bar"><div data-w="88"></div></div></div>
+          <div class="bar-row"><div class="top"><strong>Études hydrologiques &amp; hydrauliques</strong><span>Intermédiaire</span></div><div class="bar"><div data-w="75"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group fade-up">
+        <h3><i class="fa-solid fa-laptop-code"></i> Logiciels techniques</h3>
+        <div class="skill-list">
+          <span class="skill-chip">CYPECAD 2025/2026</span>
+          <span class="skill-chip">Robot Structural Analysis</span>
+          <span class="skill-chip">Revit</span>
+          <span class="skill-chip">AutoCAD 2D</span>
+          <span class="skill-chip">SketchUp 3D</span>
+          <span class="skill-chip">Vray</span>
+          <span class="skill-chip">Enscape</span>
+          <span class="skill-chip">Lumion 3D</span>
+          <span class="skill-chip">DIALUX</span>
+          <span class="skill-chip">GRAITEC</span>
+          <span class="skill-chip">MS Project</span>
+          <span class="skill-chip">Pack Office</span>
+          <span class="skill-chip">Excel (formulas)</span>
+        </div>
+      </div>
+
+      <div class="skill-group fade-up">
+        <h3><i class="fa-solid fa-certificate"></i> Certifications clés</h3>
+        <div class="skill-list">
+          <span class="skill-chip"><i class="fa-solid fa-check" style="color:var(--brand);margin-right:6px"></i>EPFL — L'Art des Structures 1 &amp; 2</span>
+          <span class="skill-chip"><i class="fa-solid fa-check" style="color:var(--brand);margin-right:6px"></i>EPFL — Management of Urban Infrastructures</span>
+          <span class="skill-chip"><i class="fa-solid fa-check" style="color:var(--brand);margin-right:6px"></i>Columbia — Construction Project Management</span>
+          <span class="skill-chip"><i class="fa-solid fa-check" style="color:var(--brand);margin-right:6px"></i>NTU — BIM Application for Engineers</span>
+          <span class="skill-chip"><i class="fa-solid fa-check" style="color:var(--brand);margin-right:6px"></i>Autodesk — AutoCAD Certified Professional</span>
+          <span class="skill-chip"><i class="fa-solid fa-check" style="color:var(--brand);margin-right:6px"></i>SUNY Buffalo — Safety in Utility Industry</span>
+          <span class="skill-chip"><i class="fa-solid fa-check" style="color:var(--brand);margin-right:6px"></i>L&amp;T EduTech — Comfort in Buildings</span>
+          <a href="#certifications" class="skill-chip" style="color:var(--brand);font-weight:600"><i class="fa-solid fa-arrow-right" style="margin-right:6px"></i>Voir tous les certificats</a>
+        </div>
+      </div>
+
+      <div class="skill-group fade-up">
+        <h3><i class="fa-solid fa-user-gear"></i> Soft skills &amp; Langues</h3>
+        <div class="skill-bar">
+          <div class="bar-row"><div class="top"><strong>Français</strong><span>Langue maternelle</span></div><div class="bar"><div data-w="100"></div></div></div>
+          <div class="bar-row"><div class="top"><strong>Anglais</strong><span>Professionnel</span></div><div class="bar"><div data-w="70"></div></div></div>
+        </div>
+        <div class="skill-list" style="margin-top:20px">
+          <span class="skill-chip">Rigueur</span>
+          <span class="skill-chip">Assiduité</span>
+          <span class="skill-chip">Capacité d'adaptation</span>
+          <span class="skill-chip">Discipline</span>
+          <span class="skill-chip">Gestion d'équipe</span>
+          <span class="skill-chip">Communication client</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="section section-alt">
+  <div class="container">
+    <div class="fade-up">
+      <span class="eyebrow">Certifications</span>
+      <h2 class="section-title">Formations et certificats officiels</h2>
+      <p class="section-sub">Certificats obtenus auprès d'établissements de référence : EPFL, Columbia University, National Taiwan University, Autodesk, SUNY Buffalo et L&amp;T EduTech — via la plateforme Coursera.</p>
+    </div>
+
+    <div class="cert-grid">
+
+      <div class="cert-card fade-up" data-cert="assets/certificates/1.jpeg">
+        <div class="cert-head">
+          <div class="cert-icon"><i class="fa-solid fa-city"></i></div>
+          <div class="cert-head-txt">
+            <div class="cert-issuer">EPFL · Coursera</div>
+            <h4>Management of Urban Infrastructures — Part 1</h4>
+            <div class="cert-date"><i class="fa-regular fa-calendar"></i> 18 juin 2025</div>
+          </div>
+        </div>
+        <div class="cert-preview">
+          <img src="assets/certificates/1.jpeg" alt="Certificat Management of Urban Infrastructures"/>
+          <span class="cert-cta">Voir en grand <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="cert-card fade-up" data-cert="assets/certificates/7.jpeg">
+        <div class="cert-head">
+          <div class="cert-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+          <div class="cert-head-txt">
+            <div class="cert-issuer">EPFL · Coursera</div>
+            <h4>L'Art des Structures 2 — Treillis, poutres, dalles et cadres</h4>
+            <div class="cert-date"><i class="fa-regular fa-calendar"></i> 22 juin 2024</div>
+          </div>
+        </div>
+        <div class="cert-preview">
+          <img src="assets/certificates/7.jpeg" alt="Certificat L'Art des Structures 2"/>
+          <span class="cert-cta">Voir en grand <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="cert-card fade-up" data-cert="assets/certificates/3.jpeg">
+        <div class="cert-head">
+          <div class="cert-icon"><i class="fa-solid fa-bridge"></i></div>
+          <div class="cert-head-txt">
+            <div class="cert-issuer">EPFL · Coursera</div>
+            <h4>L'Art des Structures 1 — Câbles et arcs</h4>
+            <div class="cert-date"><i class="fa-regular fa-calendar"></i> 1 février 2024</div>
+          </div>
+        </div>
+        <div class="cert-preview">
+          <img src="assets/certificates/3.jpeg" alt="Certificat L'Art des Structures 1"/>
+          <span class="cert-cta">Voir en grand <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="cert-card fade-up" data-cert="assets/certificates/5.jpeg">
+        <div class="cert-head">
+          <div class="cert-icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <div class="cert-head-txt">
+            <div class="cert-issuer">Columbia University · Coursera</div>
+            <h4>Construction Project Management</h4>
+            <div class="cert-date"><i class="fa-regular fa-calendar"></i> 16 mai 2024</div>
+          </div>
+        </div>
+        <div class="cert-preview">
+          <img src="assets/certificates/5.jpeg" alt="Certificat Construction Project Management"/>
+          <span class="cert-cta">Voir en grand <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="cert-card fade-up" data-cert="assets/certificates/4.jpeg">
+        <div class="cert-head">
+          <div class="cert-icon"><i class="fa-solid fa-cubes"></i></div>
+          <div class="cert-head-txt">
+            <div class="cert-issuer">National Taiwan University · Coursera</div>
+            <h4>BIM Application for Engineers</h4>
+            <div class="cert-date"><i class="fa-regular fa-calendar"></i> 20 juin 2025</div>
+          </div>
+        </div>
+        <div class="cert-preview">
+          <img src="assets/certificates/4.jpeg" alt="Certificat BIM Application for Engineers"/>
+          <span class="cert-cta">Voir en grand <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="cert-card fade-up" data-cert="assets/certificates/2.jpeg">
+        <div class="cert-head">
+          <div class="cert-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+          <div class="cert-head-txt">
+            <div class="cert-issuer">SUNY Buffalo · Coursera</div>
+            <h4>Safety in the Utility Industry</h4>
+            <div class="cert-date"><i class="fa-regular fa-calendar"></i> 2 août 2025</div>
+          </div>
+        </div>
+        <div class="cert-preview">
+          <img src="assets/certificates/2.jpeg" alt="Certificat Safety in the Utility Industry"/>
+          <span class="cert-cta">Voir en grand <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="cert-card fade-up" data-cert="assets/certificates/6.jpeg">
+        <div class="cert-head">
+          <div class="cert-icon"><i class="fa-solid fa-house-chimney"></i></div>
+          <div class="cert-head-txt">
+            <div class="cert-issuer">L&amp;T EduTech · Coursera</div>
+            <h4>Comfort in Buildings</h4>
+            <div class="cert-date"><i class="fa-regular fa-calendar"></i> 16 janvier 2026</div>
+          </div>
+        </div>
+        <div class="cert-preview">
+          <img src="assets/certificates/6.jpeg" alt="Certificat Comfort in Buildings"/>
+          <span class="cert-cta">Voir en grand <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="cert-card fade-up" data-cert="assets/certificates/coursera.pdf" data-pdf="1">
+        <div class="cert-head">
+          <div class="cert-icon"><i class="fa-solid fa-drafting-compass"></i></div>
+          <div class="cert-head-txt">
+            <div class="cert-issuer">Autodesk · Coursera</div>
+            <h4>Autodesk Certified Professional: AutoCAD Design &amp; Drafting</h4>
+            <div class="cert-date"><i class="fa-regular fa-calendar"></i> 13 décembre 2023</div>
+          </div>
+        </div>
+        <div class="cert-preview pdf-preview">
+          <div class="pdf-box">
+            <i class="fa-solid fa-file-pdf"></i>
+            <div class="lbl">AUTODESK</div>
+            <div class="sub">Certificat PDF officiel</div>
+          </div>
+          <span class="cert-cta">Ouvrir le PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="close-lb" id="close-lb"><i class="fa-solid fa-xmark"></i></button>
+  <img id="lb-img" src="" alt="Certificat"/>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-wrap fade-up">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <span class="eyebrow">Contact</span>
+          <h2>Discutons de votre projet</h2>
+          <p>Que ce soit pour un stage, un poste en bureau d'études ou une mission freelance, je suis ouvert aux opportunités. Réponse sous 24h garantie.</p>
+          <div class="contact-methods">
+            <a class="c-method" href="mailto:b.kouassi@hestim.ma"><i class="fa-solid fa-envelope"></i><div><span class="l">Email</span><span class="v">b.kouassi@hestim.ma</span></div></a>
+            <a class="c-method" href="https://wa.me/212660695184" target="_blank"><i class="fa-brands fa-whatsapp"></i><div><span class="l">WhatsApp</span><span class="v">+212 660-695184</span></div></a>
+            <a class="c-method" href="https://www.linkedin.com/in/richard-koffi/" target="_blank"><i class="fa-brands fa-linkedin-in"></i><div><span class="l">LinkedIn</span><span class="v">RICHARD KOFFI</span></div></a>
+            <a class="c-method" href="#"><i class="fa-solid fa-location-dot"></i><div><span class="l">Localisation</span><span class="v">Casablanca, Maroc</span></div></a>
+          </div>
+        </div>
+        <div class="contact-right">
+          <h3>Envoyer un message</h3>
+          <form id="contact-form" onsubmit="return sendMail(event)">
+            <div class="form-row"><label>Nom</label><input type="text" name="nom" required placeholder="Votre nom"></div>
+            <div class="form-row"><label>Email</label><input type="email" name="email" required placeholder="votre@email.com"></div>
+            <div class="form-row"><label>Sujet</label><input type="text" name="sujet" required placeholder="Projet / opportunité"></div>
+            <div class="form-row"><label>Message</label><textarea name="message" required placeholder="Décrivez votre besoin..."></textarea></div>
+            <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Envoyer le message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="socials">
+      <a href="mailto:b.kouassi@hestim.ma"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://wa.me/212660695184" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.linkedin.com/in/richard-koffi/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="tel:+212660695184"><i class="fa-solid fa-phone"></i></a>
+    </div>
+    <p>© 2026 KOFFI Brou Kouassi Richard — Portfolio Ingénieur Génie Civil. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/212660695184" class="float-contact" target="_blank" title="Me contacter sur WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-gallery">
+      <img class="modal-main-img" id="modal-img" src="" alt=""/>
+      <div class="modal-thumbs" id="modal-thumbs"></div>
+    </div>
+    <div class="modal-info" id="modal-info"></div>
+  </div>
+</div>
+
+<script>
+/* ===== DATA PROJETS ===== */
+const PROJECTS = {
+  cypecad:{
+    tag:"Structure",
+    title:"Dimensionnement CYPECAD — Dalles post-tension & réticulées",
+    desc:"Étude de dimensionnement de bâtiments R+3 et R+4 avec sous-sol et mezzanine, réalisée avec dalles post-tensionnées et dalles réticulées alvéolaires selon la norme Eurocode 2 à l'aide de CYPECAD 2025.",
+    period:"Août 2025 – Octobre 2025",
+    tools:["CYPECAD 2025","Eurocode 2","Dalles post-tension","Dalles réticulées"],
+    details:[
+      "Modélisation 3D complète de la structure",
+      "Dimensionnement des éléments porteurs selon Eurocode 2",
+      "Application de la norme post-tension",
+      "Vérifications ELU/ELS et flèches",
+      "Production des plans d'exécution"
+    ],
+    imgs:["assets/projects/cypecad/1.png","assets/projects/cypecad/2.png","assets/projects/cypecad/3.png","assets/projects/cypecad/4.png","assets/projects/cypecad/5.png","assets/projects/cypecad/6.png","assets/projects/cypecad/7.png"]
+  },
+  villa:{
+    tag:"Conception complète",
+    title:"Villa R+1 avec sous-sol — Conception complète",
+    desc:"Projet d'Activité d'Expertise HESTIM : conception architecturale, BET Structure, étude d'aménagement extérieur, lots techniques (plomberie et électricité) et dossier de synthèse.",
+    period:"Février 2025 – Mai 2025",
+    tools:["AutoCAD","Revit","Robot Structural","SketchUp"],
+    details:[
+      "Conception architecturale complète (plans, façades, coupes)",
+      "BET Structure (dimensionnement béton armé)",
+      "Étude d'aménagement extérieur",
+      "BET Lots Techniques — Plomberie & Électricité",
+      "Dossier de synthèse et estimation budgétaire"
+    ],
+    imgs:["assets/projects/villa/1.png","assets/projects/villa/2.png"]
+  },
+  maison:{
+    tag:"Projet architectural",
+    title:"Maison individuelle R+2 — Étude économique & Modélisation 3D",
+    desc:"Projet architectural HESTIM comprenant l'étude économique complète, la modélisation 3D d'une maison individuelle R+2 ainsi que la production des plans d'exécution (fondation, planchers, édicule).",
+    period:"Janvier 2025",
+    tools:["Revit","SketchUp","AutoCAD","Excel"],
+    details:[
+      "Modélisation 3D architecturale complète",
+      "Rendus photo-réalistes intérieur et extérieur",
+      "Plans d'exécution : fondation dallage, PH RDC, PH étage, édicule",
+      "Étude économique et métré",
+      "Présentation finale PowerPoint"
+    ],
+    imgs:["assets/projects/maison/1.jpeg","assets/projects/maison/2.jpeg","assets/projects/maison/3.jpeg","assets/projects/maison/4.jpeg","assets/projects/maison/5.jpeg","assets/projects/maison/6.jpeg","assets/projects/maison/7.jpeg"]
+  },
+  dialux:{
+    tag:"Électricité",
+    title:"Bilan de puissance d'un bâtiment R+4 — DIALUX",
+    desc:"Étude d'éclairage et calcul du bilan de puissance électrique d'un bâtiment R+4. Dimensionnement des installations et vérification du confort visuel par simulation DIALUX.",
+    period:"2026",
+    tools:["DIALUX","Excel","Normes électriques"],
+    details:[
+      "Modélisation 3D du bâtiment dans DIALUX",
+      "Calcul des niveaux d'éclairement par local",
+      "Bilan de puissance électrique global",
+      "Dimensionnement des circuits et protections",
+      "Rapport technique détaillé"
+    ],
+    imgs:["assets/projects/dialux/1.jpeg","assets/projects/dialux/2.jpeg","assets/projects/dialux/3.jpeg","assets/projects/dialux/4.jpeg","assets/projects/dialux/5.jpeg"]
+  },
+  salle:{
+    tag:"Rendu 3D",
+    title:"Salle de réunion — Rendu photo-réaliste",
+    desc:"Modélisation 3D complète d'une salle de réunion moderne avec travail sur l'éclairage, les matériaux et l'ambiance générale. Série de rendus photo-réalistes pour présentation client.",
+    period:"2026",
+    tools:["SketchUp 3D","Vray","Enscape","Photoshop"],
+    details:[
+      "Modélisation 3D détaillée (mobilier, éclairages)",
+      "Application de matériaux photo-réalistes",
+      "Étude et mise en scène de l'éclairage",
+      "Multiples angles de vue",
+      "Vidéo de présentation immersive"
+    ],
+    imgs:["assets/projects/salle/1.jpeg","assets/projects/salle/2.jpeg","assets/projects/salle/3.jpeg","assets/projects/salle/4.jpeg","assets/projects/salle/5.jpeg","assets/projects/salle/6.jpeg","assets/projects/salle/7.jpeg","assets/projects/salle/8.jpeg","assets/projects/salle/9.jpeg","assets/projects/salle/10.jpeg","assets/projects/salle/11.jpeg"]
+  },
+  docteur:{
+    tag:"Rendu 3D",
+    title:"Cabinet médical — Rendu photo-réaliste",
+    desc:"Modélisation 3D et rendus photo-réalistes d'un espace médical moderne. Focus sur l'ergonomie, l'éclairage doux et le confort visuel du patient.",
+    period:"2026",
+    tools:["SketchUp 3D","Lumion","Vray"],
+    details:[
+      "Modélisation 3D du cabinet médical",
+      "Étude d'ergonomie de l'espace",
+      "Éclairage doux et ambiance apaisante",
+      "Matériaux réalistes (bois, textiles, surfaces médicales)",
+      "Rendus haute qualité pour client"
+    ],
+    imgs:["assets/projects/docteur/1.jpeg","assets/projects/docteur/2.jpeg","assets/projects/docteur/3.jpeg","assets/projects/docteur/4.jpeg","assets/projects/docteur/5.jpeg","assets/projects/docteur/6.jpeg"]
+  }
+};
+
+/* ===== NAV ===== */
+const nav = document.getElementById('nav');
+const navLinks = document.getElementById('nav-links');
+const menuToggle = document.getElementById('menu-toggle');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>30)nav.classList.add('scrolled');else nav.classList.remove('scrolled');
+});
+menuToggle.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+/* ===== FILTER ===== */
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.project').forEach(p=>{
+      p.style.display = (f==='all'||p.dataset.cat.includes(f))?'flex':'none';
+    });
+  });
+});
+
+/* ===== MODAL ===== */
+const modal=document.getElementById('modal');
+const modalImg=document.getElementById('modal-img');
+const modalThumbs=document.getElementById('modal-thumbs');
+const modalInfo=document.getElementById('modal-info');
+document.querySelectorAll('.project').forEach(p=>{
+  p.addEventListener('click',()=>openProject(p.dataset.project));
+});
+document.getElementById('modal-close').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+function openProject(key){
+  const d=PROJECTS[key];if(!d)return;
+  modalImg.src=d.imgs[0];
+  modalThumbs.innerHTML=d.imgs.map((src,i)=>`<img src="${src}" class="${i===0?'active':''}" data-src="${src}" alt=""/>`).join('');
+  modalThumbs.querySelectorAll('img').forEach(t=>{
+    t.addEventListener('click',()=>{
+      modalImg.src=t.dataset.src;
+      modalThumbs.querySelectorAll('img').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+    });
+  });
+  modalInfo.innerHTML=`
+    <span class="tag">${d.tag}</span>
+    <h2>${d.title}</h2>
+    <p><strong>Période :</strong> ${d.period}</p>
+    <p>${d.desc}</p>
+    <h4>Outils utilisés</h4>
+    <div class="project-tools">${d.tools.map(t=>`<span class="tool">${t}</span>`).join('')}</div>
+    <h4>Travail réalisé</h4>
+    <ul>${d.details.map(x=>`<li>${x}</li>`).join('')}</ul>
+  `;
+  modal.classList.add('open');document.body.style.overflow='hidden';
+}
+function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
+
+/* ===== LIGHTBOX CERTIFICATS ===== */
+const lb=document.getElementById('lightbox');
+const lbImg=document.getElementById('lb-img');
+document.querySelectorAll('.cert-card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    const src=c.dataset.cert;
+    const isPdf=c.dataset.pdf==='1';
+    if(isPdf){window.open(src,'_blank');return}
+    lbImg.src=src;
+    lb.classList.add('open');document.body.style.overflow='hidden';
+  });
+});
+document.getElementById('close-lb').addEventListener('click',closeLB);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLB()});
+function closeLB(){lb.classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLB();closeModal()}});
+
+/* ===== FADE UP OBSERVER ===== */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      // animate bars inside
+      e.target.querySelectorAll('.bar > div').forEach(b=>{
+        b.style.width=(b.dataset.w||'80')+'%';
+      });
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+
+/* ===== FORM : ouvre le client mail ===== */
+function sendMail(e){
+  e.preventDefault();
+  const f=e.target;
+  const nom=f.nom.value,email=f.email.value,sujet=f.sujet.value,message=f.message.value;
+  const body=`Nom: ${nom}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`;
+  window.location.href=`mailto:b.kouassi@hestim.ma?subject=${encodeURIComponent(sujet)}&body=${body}`;
+  return false;
+}
+</script>
+</body>
+</html>

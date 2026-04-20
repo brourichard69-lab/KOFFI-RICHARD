@@ -1,0 +1,23 @@
+# Dossiers source (originaux) — non nécessaires sur le site
+CV/
+Mes certificats/
+Mes projets/
+ta photo/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
+
+# Temporaire
+*.tmp
+*.bak
