@@ -11,19 +11,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <style>
   :root{
-    --bg:#f7f9fc;
-    --bg-alt:#ffffff;
-    --surface:#ffffff;
-    --ink:#0b1a2b;
-    --ink-2:#1f2d3d;
-    --muted:#6b7a90;
-    --line:#e4eaf2;
-    --brand:#1d4ed8;     /* bleu profond */
-    --brand-2:#2563eb;
-    --brand-soft:#e8efff;
-    --accent:#0ea5e9;
-    --shadow:0 10px 30px rgba(13, 38, 76, .08);
-    --shadow-lg:0 20px 50px rgba(13, 38, 76, .12);
+    --bg:#0d1117;
+    --bg-alt:#111827;
+    --surface:#161e2e;
+    --ink:#e8f0fe;
+    --ink-2:#c9d5f0;
+    --muted:#7a8faf;
+    --line:#1e2d45;
+    --brand:#3b82f6;
+    --brand-2:#60a5fa;
+    --brand-soft:#1e3a5f;
+    --accent:#38bdf8;
+    --shadow:0 10px 30px rgba(0,0,0,.4);
+    --shadow-lg:0 20px 50px rgba(0,0,0,.6);
     --radius:14px;
     --radius-lg:22px;
   }
@@ -41,8 +41,8 @@
   a{color:var(--brand);text-decoration:none}
   img{max-width:100%;display:block}
   .container{max-width:1200px;margin:0 auto;padding:0 24px}
-  .section{padding:110px 0;position:relative}
-  .section-alt{background:var(--bg-alt)}
+  .section{padding:110px 0;position:relative;z-index:1}
+  .section-alt{background:rgba(17,24,39,.7);backdrop-filter:blur(4px)}
   .eyebrow{
     display:inline-block;color:var(--brand);font-weight:600;
     text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;margin-bottom:14px
@@ -53,7 +53,7 @@
   /* NAV */
   nav.top{
     position:fixed;top:0;left:0;right:0;z-index:100;
-    background:rgba(255,255,255,.8);backdrop-filter:blur(14px);
+    background:rgba(13,17,23,.85);backdrop-filter:blur(14px);
     border-bottom:1px solid transparent;transition:all .3s ease;
   }
   nav.top.scrolled{border-bottom-color:var(--line);box-shadow:0 2px 10px rgba(0,0,0,.03)}
@@ -61,7 +61,7 @@
   .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;color:var(--ink);display:flex;gap:10px;align-items:center}
   .logo .dot{width:10px;height:10px;background:var(--brand);border-radius:50%;box-shadow:0 0 0 4px var(--brand-soft)}
   .nav-links{display:flex;gap:30px;align-items:center}
-  .nav-links a{color:var(--ink-2);font-weight:500;font-size:.95rem;position:relative;padding:6px 2px;transition:color .2s}
+  .nav-links a{color:var(--ink-2);font-weight:500;font-size:.95rem;position:relative;padding:6px 2px;transition:color .2s;text-shadow:0 0 20px rgba(59,130,246,.3)}
   .nav-links a:hover{color:var(--brand)}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--brand);transition:width .25s}
   .nav-links a:hover::after{width:100%}
@@ -77,19 +77,20 @@
   .menu-toggle{display:none;background:none;border:none;font-size:1.5rem;color:var(--ink);cursor:pointer}
 
   /* HERO */
+  #particles-canvas{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    z-index:0;pointer-events:none;
+  }
   .hero{
     min-height:100vh;display:flex;align-items:center;padding:140px 0 80px;
-    background:
-      radial-gradient(1100px 540px at 85% -10%,rgba(37,99,235,.10),transparent 60%),
-      radial-gradient(800px 400px at -5% 50%,rgba(14,165,233,.08),transparent 60%),
-      var(--bg);
+    background:transparent;
     position:relative;overflow:hidden
   }
   .hero::before{
     content:"";position:absolute;inset:0;
     background-image:
-      linear-gradient(rgba(29,78,216,.05) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(29,78,216,.05) 1px,transparent 1px);
+      linear-gradient(rgba(59,130,246,.06) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(59,130,246,.06) 1px,transparent 1px);
     background-size:60px 60px;
     mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
     -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
@@ -137,7 +138,7 @@
   .about-txt p{color:var(--ink-2);margin-bottom:18px;font-size:1.02rem}
   .about-txt strong{color:var(--ink);font-weight:600}
   .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:30px}
-  .pillar{background:var(--surface);padding:22px;border-radius:var(--radius);border:1px solid var(--line);transition:all .3s}
+  .pillar{background:rgba(22,30,46,.8);backdrop-filter:blur(6px);padding:22px;border-radius:var(--radius);border:1px solid var(--line);transition:all .3s}
   .pillar:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--brand-soft)}
   .pillar i{color:var(--brand);font-size:1.4rem;margin-bottom:10px;display:block}
   .pillar h4{font-size:1.02rem;margin-bottom:6px}
@@ -475,6 +476,7 @@
 </style>
 </head>
 <body>
+<canvas id="particles-canvas"></canvas>
 
 <!-- NAV -->
 <nav class="top" id="nav">
@@ -1272,6 +1274,77 @@ const io=new IntersectionObserver((entries)=>{
   });
 },{threshold:.12});
 document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+
+/* ===== PARTICLES BACKGROUND ===== */
+(function(){
+  const canvas=document.getElementById('particles-canvas');
+  const ctx=canvas.getContext('2d');
+  let W,H,particles=[];
+  const COUNT=90;
+
+  function resize(){
+    W=canvas.width=window.innerWidth;
+    H=canvas.height=window.innerHeight;
+  }
+  window.addEventListener('resize',resize);
+  resize();
+
+  function rand(a,b){return Math.random()*(b-a)+a;}
+
+  class Particle{
+    constructor(){this.reset(true);}
+    reset(init){
+      this.x=rand(0,W);
+      this.y=init?rand(0,H):H+10;
+      this.r=rand(1,2.8);
+      this.vx=rand(-.3,.3);
+      this.vy=rand(-.6,-.15);
+      this.alpha=rand(.3,.9);
+      this.color=Math.random()<.6?'59,130,246':'56,189,248';
+    }
+    update(){
+      this.x+=this.vx;
+      this.y+=this.vy;
+      this.alpha-=.0015;
+      if(this.y<-10||this.alpha<=0)this.reset(false);
+    }
+    draw(){
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${this.color},${this.alpha})`;
+      ctx.fill();
+    }
+  }
+
+  for(let i=0;i<COUNT;i++)particles.push(new Particle());
+
+  /* connexions entre particules proches */
+  function drawLinks(){
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const dx=particles[i].x-particles[j].x;
+        const dy=particles[i].y-particles[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120){
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x,particles[i].y);
+          ctx.lineTo(particles[j].x,particles[j].y);
+          ctx.strokeStyle=`rgba(59,130,246,${.18*(1-dist/120)})`;
+          ctx.lineWidth=.6;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    drawLinks();
+    particles.forEach(p=>{p.update();p.draw();});
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
 
 /* ===== FORM : ouvre le client mail ===== */
 function sendMail(e){
