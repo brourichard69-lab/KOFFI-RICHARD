@@ -12,6 +12,22 @@
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏗️</text></svg>" />
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"KOFFI Brou Kouassi Richard",
+  "jobTitle":"Ingénieur d'État en Génie Civil et Urbanisme",
+  "email":"brourichard69@gmail.com",
+  "telephone":"+212660695184",
+  "url":"https://brourichard69-lab.github.io/KOFFI-RICHARD/",
+  "image":"https://brourichard69-lab.github.io/KOFFI-RICHARD/assets/photo.jpeg",
+  "alumniOf":[{"@type":"EducationalOrganization","name":"HESTIM Casablanca"},{"@type":"EducationalOrganization","name":"INSA Lyon"}],
+  "knowsAbout":["Génie Civil","Béton Armé","CYPECAD","BIM","Eurocode 2","AutoCAD","Revit","Robot Structural"],
+  "address":{"@type":"PostalAddress","addressLocality":"Casablanca","addressCountry":"MA"},
+  "sameAs":["https://www.linkedin.com/in/richard-koffi/"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -480,6 +496,62 @@
     .hero{padding:120px 0 60px}
     .section-sub{margin-bottom:40px}
   }
+
+  /* WATERMARK CERTIFICATS */
+  .cert-preview::before{
+    content:"© KOFFI Richard — Confidentiel";
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%) rotate(-35deg);
+    color:rgba(29,78,216,.3);font-size:.9rem;font-weight:800;
+    white-space:nowrap;z-index:10;pointer-events:none;
+    letter-spacing:.12em;text-transform:uppercase;
+    font-family:'Space Grotesk',sans-serif;
+  }
+  .cert-preview img{-webkit-user-drag:none;user-select:none}
+
+  /* WATERMARK LIGHTBOX */
+  .lb-watermark{
+    position:absolute;bottom:22px;left:50%;transform:translateX(-50%);
+    color:rgba(255,255,255,.55);font-size:.75rem;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;
+    pointer-events:none;z-index:10;background:rgba(0,0,0,.35);
+    padding:6px 14px;border-radius:999px;backdrop-filter:blur(4px)
+  }
+
+  /* BACK TO TOP */
+  .back-top{
+    position:fixed;bottom:100px;right:26px;background:var(--brand-soft);color:var(--brand);
+    width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+    font-size:1rem;cursor:pointer;border:1.5px solid var(--brand);opacity:0;
+    transition:all .3s;z-index:89
+  }
+  .back-top.show{opacity:1}
+  .back-top:hover{background:var(--brand);color:#fff;transform:translateY(-3px)}
+
+  /* SHARE BUTTON */
+  .share-btn{
+    display:inline-flex;align-items:center;gap:8px;background:transparent;
+    border:1.5px solid var(--line);padding:10px 20px;border-radius:999px;
+    color:var(--ink-2);font-size:.88rem;font-weight:500;cursor:pointer;
+    transition:all .2s;margin-top:8px
+  }
+  .share-btn:hover{border-color:var(--brand);color:var(--brand)}
+
+  /* FORM FEEDBACK */
+  .form-msg{
+    padding:12px 16px;border-radius:10px;font-size:.9rem;font-weight:500;
+    margin-top:12px;display:none;text-align:center
+  }
+  .form-msg.success{background:rgba(34,197,94,.15);color:#86efac;display:block}
+  .form-msg.error{background:rgba(239,68,68,.15);color:#fca5a5;display:block}
+
+  /* LINKEDIN BADGE HERO */
+  .linkedin-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#0077B5;color:#fff;padding:9px 18px;border-radius:999px;
+    font-size:.88rem;font-weight:600;transition:all .25s;margin-top:4px
+  }
+  .linkedin-badge:hover{background:#005885;transform:translateY(-2px)}
 </style>
 </head>
 <body>
@@ -515,6 +587,10 @@
       <div class="hero-cta fade-up">
         <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Voir mes projets</a>
         <a href="#contact" class="btn btn-ghost"><i class="fa-regular fa-paper-plane"></i> Me contacter</a>
+      </div>
+      <div class="fade-up" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px">
+        <a href="https://www.linkedin.com/in/richard-koffi/" target="_blank" class="linkedin-badge"><i class="fa-brands fa-linkedin-in"></i> Voir mon LinkedIn</a>
+        <button class="share-btn" onclick="sharePortfolio()"><i class="fa-solid fa-share-nodes"></i> Partager mon portfolio</button>
       </div>
       <div class="hero-stats fade-up">
         <div class="stat"><div class="num">6+</div><div class="lbl">Projets techniques</div></div>
@@ -1033,8 +1109,12 @@
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="close-lb" id="close-lb"><i class="fa-solid fa-xmark"></i></button>
-  <img id="lb-img" src="" alt="Certificat"/>
+  <img id="lb-img" src="" alt="Certificat" draggable="false" oncontextmenu="return false"/>
+  <div class="lb-watermark">© KOFFI Brou Kouassi Richard — Tous droits réservés</div>
 </div>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="back-top" title="Retour en haut"><i class="fa-solid fa-chevron-up"></i></button>
 
 <!-- CONTACT -->
 <section id="contact" class="section">
@@ -1054,12 +1134,16 @@
         </div>
         <div class="contact-right">
           <h3>Envoyer un message</h3>
-          <form id="contact-form" onsubmit="return sendMail(event)">
-            <div class="form-row"><label>Nom</label><input type="text" name="nom" required placeholder="Votre nom"></div>
+          <form id="contact-form" onsubmit="sendMail(event)">
+            <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS">
+            <input type="hidden" name="subject" value="Nouveau message — Portfolio KOFFI Richard">
+            <input type="hidden" name="from_name" value="Portfolio KOFFI Richard">
+            <div class="form-row"><label>Nom</label><input type="text" name="name" required placeholder="Votre nom"></div>
             <div class="form-row"><label>Email</label><input type="email" name="email" required placeholder="votre@email.com"></div>
             <div class="form-row"><label>Sujet</label><input type="text" name="sujet" required placeholder="Projet / opportunité"></div>
             <div class="form-row"><label>Message</label><textarea name="message" required placeholder="Décrivez votre besoin..."></textarea></div>
-            <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Envoyer le message</button>
+            <button type="submit" class="btn-submit" id="submit-btn"><i class="fa-solid fa-paper-plane"></i> Envoyer le message</button>
+            <div class="form-msg" id="form-msg"></div>
           </form>
         </div>
       </div>
@@ -1353,15 +1437,61 @@ document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
   loop();
 })();
 
-/* ===== FORM : ouvre le client mail ===== */
-function sendMail(e){
+/* ===== FORM : envoi réel via Web3Forms ===== */
+async function sendMail(e){
   e.preventDefault();
-  const f=e.target;
-  const nom=f.nom.value,email=f.email.value,sujet=f.sujet.value,message=f.message.value;
-  const body=`Nom: ${nom}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`;
-  window.location.href=`mailto:brourichard69@gmail.com?subject=${encodeURIComponent(sujet)}&body=${body}`;
-  return false;
+  const btn=document.getElementById('submit-btn');
+  const msg=document.getElementById('form-msg');
+  btn.disabled=true;
+  btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Envoi en cours...';
+  msg.className='form-msg';msg.style.display='none';
+  try{
+    const data=new FormData(e.target);
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:data});
+    const json=await res.json();
+    if(json.success){
+      msg.className='form-msg success';
+      msg.innerHTML='<i class="fa-solid fa-check-circle"></i> Message envoyé ! Je vous répondrai sous 24h.';
+      e.target.reset();
+    }else{
+      throw new Error(json.message);
+    }
+  }catch(err){
+    msg.className='form-msg error';
+    msg.innerHTML='<i class="fa-solid fa-triangle-exclamation"></i> Erreur d\'envoi. Écrivez-moi directement sur WhatsApp.';
+  }
+  btn.disabled=false;
+  btn.innerHTML='<i class="fa-solid fa-paper-plane"></i> Envoyer le message';
 }
+
+/* ===== BACK TO TOP ===== */
+const backTop=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>400)backTop.classList.add('show');
+  else backTop.classList.remove('show');
+});
+backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ===== PARTAGER PORTFOLIO ===== */
+function sharePortfolio(){
+  const url='https://brourichard69-lab.github.io/KOFFI-RICHARD/';
+  if(navigator.share){
+    navigator.share({title:'Portfolio — KOFFI Brou Kouassi Richard',text:'Ingénieur Génie Civil — Découvrez mon portfolio',url});
+  }else{
+    navigator.clipboard.writeText(url).then(()=>{
+      const btn=document.querySelector('.share-btn');
+      const orig=btn.innerHTML;
+      btn.innerHTML='<i class="fa-solid fa-check"></i> Lien copié !';
+      setTimeout(()=>btn.innerHTML=orig,2500);
+    });
+  }
+}
+
+/* ===== BLOQUER CLIC DROIT SUR CERTIFICATS ===== */
+document.querySelectorAll('.cert-preview img').forEach(img=>{
+  img.addEventListener('contextmenu',e=>e.preventDefault());
+  img.setAttribute('draggable','false');
+});
 </script>
 </body>
 </html>
