@@ -1,14 +1,14 @@
 # Portfolio — KOFFI Brou Kouassi Richard
 
-Portfolio professionnel d'un **Ingénieur d'État en Génie Civil & Urbanisme**, double diplomation HESTIM Casablanca / INSA Lyon.
+Portfolio professionnel d'un **Ingénieur d'État en Génie Civil & Urbanisme**, double diplomation HESTIM Casablanca / INSA Hauts-de-France.
 
 ## Aperçu
 
 Site web statique (HTML + CSS + JS) présentant :
-- Profil et parcours (HESTIM, INSA Lyon, stages GUIDO Étude & FABRA Contrôle)
-- 6 projets techniques (CYPECAD, Villa R+1, Maison R+2, DIALUX, rendus 3D)
+- Profil et parcours (HESTIM, INSA Hauts-de-France, stages GUIDO Étude & FABRA Contrôle)
+- 11 projets techniques (CYPECAD, Villa R+1, Maison R+2, DIALUX, structures mixtes, hangar métallique, CADEX Sénégal, rendus 3D)
 - Services freelance (études de structure, notes de calcul, plans d'exécution, modélisation BIM)
-- 8 certifications (EPFL, Columbia, NTU, Autodesk, SUNY Buffalo, L&T EduTech)
+- 11 certifications (EPFL, Columbia, NTU, Autodesk, SUNY Buffalo, University of Colorado Boulder, ESSEC, L&T EduTech)
 - Formulaire de contact + WhatsApp + LinkedIn
 
 ## Stack
@@ -26,8 +26,8 @@ Site web statique (HTML + CSS + JS) présentant :
 ├── assets/
 │   ├── photo.jpeg
 │   ├── CV-Koffi-Brou-Kouassi-Richard.pdf
-│   ├── projects/           # 6 dossiers projets avec images
-│   └── certificates/       # 8 certificats officiels
+│   ├── projects/           # 11 dossiers projets avec images
+│   └── certificates/       # 11 certificats officiels
 └── README.md
 ```
 
